@@ -1,7 +1,19 @@
 [package]
 name = "ebay-promotions"
-version = "0.0.1"
-edition = "2024"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "ebay_promotions_lib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "ebay-auth"        # this is the auth utility
+path = "src/main.rs"
+
+[[bin]]
+name = "discount-manager"
+path = "src/bin/discount-manager.rs"
 
 [dependencies]
 tokio = { version = "1", features = ["macros", "rt-multi-thread", "time"] }

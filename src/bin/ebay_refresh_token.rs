@@ -7,9 +7,6 @@ use std::env;
 #[derive(Deserialize)]
 struct TokenResponse {
     access_token: String,
-    // keep fields if you want later
-    // expires_in: i64,
-    // token_type: String,
 }
 
 #[tokio::main]
