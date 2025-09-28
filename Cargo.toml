@@ -1,0 +1,19 @@
+[package]
+name = "ebay-promotions"
+version = "0.0.1"
+edition = "2024"
+
+[dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time"] }
+reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", features = ["serde", "clock"] }
+dotenvy = "0.15"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt"] }
+governor = "0.6"
+nonzero_ext = "0.3"
+thiserror = "1"
+anyhow = "1"
+dialoguer = "0.11"
