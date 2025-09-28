@@ -28,10 +28,10 @@ This repository uses GitHub Actions for CI with rust-cache to speed up builds:
 
 2. Run the application:
    ```bash
-   cargo run --bin ebay-promotions
+   cargo run --bin ebay-auth
    ```
 
-3. Run the token refresh utility:
+3. Run the discount manager:
    ```bash
-   cargo run --bin ebay_refresh_token
+   cargo run --bin discount-manager
    ```
