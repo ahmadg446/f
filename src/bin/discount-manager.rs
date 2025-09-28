@@ -7,7 +7,7 @@ use tracing_subscriber::FmtSubscriber;
 use ebay_promotions_lib::{
     ApiError, Config, MarketingApi, body_has_error_1001, fetch_all_promotions,
     filter_expiring, refresh_access_token, update_env_access_token, parse_rfc3339,
-    PromotionSummary, short_desc_tag, plus_days,
+    PromotionSummary, short_desc_tag,
 };
 
 fn display(discounts: &[PromotionSummary], hours_window: i64) {

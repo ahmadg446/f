@@ -8,7 +8,7 @@ name = "ebay_promotions_lib"
 path = "src/lib.rs"
 
 [[bin]]
-name = "ebay-auth"        # this is the auth utility
+name = "ebay-auth"        
 path = "src/main.rs"
 
 [[bin]]

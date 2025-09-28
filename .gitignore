@@ -2,3 +2,4 @@
 target/
 workshop/
 Cargo.lock
+confidential/
