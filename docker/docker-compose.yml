@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  discount-manager:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: discount-manager:latest
+    container_name: discount-manager
+    # Load environment variables from .env file
+    env_file:
+      - .env
+    environment:
+      # Override or add any additional environment variables
+      RUST_LOG: ${RUST_LOG:-info}
+    # Mount .env file into container (if your app reads it directly)
+    volumes:
+      - ./.env:/app/.env:ro
+      - ./data:/app/data
+    restart: unless-stopped
+    # Remove or modify the command based on your needs
+    # command: ["--mode", "auto"]  # Example: add your actual arguments

@@ -50,6 +50,60 @@ impl Config {
 pub struct PromotionList { #[serde(default)] pub promotions: Vec<PromotionSummary> }
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
+pub struct ListingSet {
+    #[serde(default)]
+    pub listings: Vec<ListingDetail>,
+    #[serde(default)]
+    pub total: i32,
+    #[serde(default)]
+    pub limit: i32,
+    #[serde(default)]
+    pub offset: i32,
+    #[serde(default)]
+    pub href: Option<String>,
+    #[serde(default)]
+    pub next: Option<String>,
+    #[serde(default)]
+    pub prev: Option<String>,
+}
+
+#[derive(Debug, Deserialize, Serialize, Clone)]
+pub struct ListingDetail {
+    #[serde(default)]
+    pub listingId: String,
+    #[serde(default)]
+    pub inventoryReferenceId: Option<String>,
+    #[serde(default)]
+    pub title: String,
+    #[serde(default)]
+    pub quantity: Option<i32>,
+    #[serde(default)]
+    pub currentPrice: Option<Value>,
+    #[serde(default)]
+    pub freeShipping: Option<bool>,
+    #[serde(default)]
+    pub listingCategoryId: Option<String>,
+    #[serde(default)]
+    pub listingCondition: Option<String>,
+    #[serde(default)]
+    pub listingConditionId: Option<String>,
+    #[serde(default)]
+    pub storeCategoryId: Option<String>,
+    #[serde(default)]
+    pub listingPromotionStatuses: Option<Vec<ItemMarkdownStatus>>,
+}
+
+#[derive(Debug, Deserialize, Serialize, Clone)]
+pub struct ItemMarkdownStatus {
+    #[serde(default)]
+    pub listingMarkdownStatus: String,
+    #[serde(default)]
+    pub statusChangedDate: String,
+    #[serde(default)]
+    pub statusMessage: Option<String>,
+}
+
+#[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct PromotionSummary {
     #[serde(default)] pub promotionId: String,
     #[serde(default)] pub promotionStatus: String,
@@ -153,6 +207,19 @@ impl MarketingApi {
     }
     pub async fn update_markdown_promotion(&self, id: &str, body: &Value) -> std::result::Result<Value, ApiError> {
         self.request_json(Method::PUT, &format!("/item_price_markdown/{}", id), Some(body)).await
+    }
+
+    pub async fn get_listing_set(&self, promotion_id: &str) -> std::result::Result<ListingSet, ApiError> {
+        let path = format!("/promotion/{}/get_listing_set", promotion_id);
+        self.request_json(Method::GET, &path, None).await
+    }
+
+    pub async fn create_item_promotion(&self, body: &Value) -> std::result::Result<Value, ApiError> {
+        self.request_json(Method::POST, "/item_promotion", Some(body)).await
+    }
+
+    pub async fn create_markdown_promotion(&self, body: &Value) -> std::result::Result<Value, ApiError> {
+        self.request_json(Method::POST, "/item_price_markdown", Some(body)).await
     }
 }
 

@@ -1,7 +1,7 @@
 use anyhow::Result;
 use dotenvy::dotenv;
 
-use ebay_promotions_lib::{Config, refresh_access_token, update_env_access_token};
+use ebay_marketing_lib::{Config, refresh_access_token, update_env_access_token};
 
 #[tokio::main]
 async fn main() -> Result<()> {

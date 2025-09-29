@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [lib]
-name = "ebay_promotions_lib"
+name = "ebay_marketing_lib"
 path = "src/lib.rs"
 
 [[bin]]
@@ -29,3 +29,4 @@ nonzero_ext = "0.3"
 thiserror = "1"
 anyhow = "1"
 dialoguer = "0.11"
+clap = { version = "4.0", features = ["derive"] }
